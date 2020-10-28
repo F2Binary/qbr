@@ -1,11 +1,9 @@
-# qbr.
-A rubik's cube solver written in python 3 using OpenCV using your webcam.
+# qbr 2.
+A pocket cube solver written in python 3 using OpenCV and a webcam.
 
 NOTE: qbr uses color detection and color detection is insanely hard to fix for
 every possible situation, because certain light influences a color detector and the
-color scheme on a rubik's cube.
-The color detection in qbr is based on my color scheme which is a mid-bright scheme from
-the [Gans365](http://thecubicle.us/images/gans56b3.jpg) and in a room with normal day light.
+the [Qiyi Qidi](https://cdn.shopify.com/s/files/1/0035/5205/1273/products/qidi2x2pre2_1024x1024@2x.jpg?v=1581453563) and in a room with normal day light.
 
 # Table of Contents
 - [Introduction](#introduction)
@@ -17,21 +15,11 @@ the [Gans365](http://thecubicle.us/images/gans56b3.jpg) and in a room with norma
 
 # Introduction
 ![demo](demo.png)
-
-The idea to create this came personally to mind when I started solving rubik's cubes.
-I solve on average a 3x3x3 rubik's cube in 14 seconds when warmed up. My personal record
-is 7.90 seconds, but there were already so many professional programmers around the world
-who created robots that solve a rubik's cube in an ETA of 5 seconds and since 2016 in 1 second
-([link](https://www.youtube.com/watch?v=ixTddQQ2Hs4)).
-That inspired me to create my own. I started using images only and eventually switched to webcam.
-
-One of the main things that killed me during developing this was color detection. It works for my
-room, but I bet it doesn't work for you, or you must have the same lighting and color scheme as I do.
-
+Fork of the orginal qbr which hoped to solve a 3x3x3 varation of the cube. The purpose of thise fork is to scan a 2x2x2 and extract colors in order to make ML predictions. 
 # Installation
 Start off by cloning:
 ```
-$ git clone https://github.com/kkoomen/qbr.git
+$ git clone https://github.com/F2Binary/qbr 
 $ cd qbr/qbr/
 ```
 
@@ -46,17 +34,17 @@ $ ./qbr.py
 This opens a webcam interface where you see basically the above photo.
 You have 4 things:
 
-* The 9 center squares.
+* The 4 center squares.
 
 These are used for scanning in
 your cube colors.
 
-* The 9 stickers in the upper left corner.
+* The 4 stickers in the upper left corner.
 
 These will update
 immediately how the computer sees the colors.
 
-* The seconds 9-sticker display below the one in the upper left corner.
+* The seconds 4-sticker display below the one in the upper left corner.
 
 When pressing `space` a 3rd cube template updates below the one in the upper left corner.
 This is the state that is saved, so you know how qbr saved it.
