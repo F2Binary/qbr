@@ -1,7 +1,7 @@
-# qbr 2.
+# qbr 2x2x2.
 A pocket cube solver written in python 3 using OpenCV and a webcam.
 
-NOTE: qbr uses color detection and color detection is insanely hard to fix for
+NOTE: qbr 2x2x2 like qbr, uses color detection and color detection is insanely hard to fix for
 every possible situation, because certain light influences a color detector and the
 the [Qiyi Qidi](https://cdn.shopify.com/s/files/1/0035/5205/1273/products/qidi2x2pre2_1024x1024@2x.jpg?v=1581453563) and in a room with normal day light.
 
@@ -128,4 +128,4 @@ B2 U2 F' R U D' L' B' U L F U F2 R2 F2 D' F2 D R2 D2 (20 moves)
 
 qbr is licensed under the MIT License.
 
-Copyright (c) Kim Koomen.
+Copyright (c) Sergio Ramirez.
