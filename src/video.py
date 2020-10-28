@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Filename      : video.py
-# Author        : Kim K
-# Created       : Fri, 29 Jan 2016
-# Last Modified : Sun, 31 Jan 2016
 # modified by: Sergio R
 
 from sys import exit as Die
