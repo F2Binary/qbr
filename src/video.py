@@ -4,7 +4,7 @@
 # Author        : Kim K
 # Created       : Fri, 29 Jan 2016
 # Last Modified : Sun, 31 Jan 2016
-
+# modified by: Sergio R
 
 from sys import exit as Die
 try:
@@ -27,43 +27,40 @@ class Webcam:
         """
         Every array has 2 values: x and y.
         Grouped per 3 since on the cam will be
-        3 rows of 3 stickers.
+        2 rows of 2 stickers.
 
         :param name: the requested color type
         :returns: list
         """
         stickers = {
             'main': [
-                [200, 120], [300, 120], [400, 120],
-                [200, 220], [300, 220], [400, 220],
-                [200, 320], [300, 320], [400, 320]
+                [250, 120], [350, 120],
+                [250, 220], [350, 220]
             ],
             'current': [
-                [20, 20], [54, 20], [88, 20],
-                [20, 54], [54, 54], [88, 54],
-                [20, 88], [54, 88], [88, 88]
+                [20, 20], [54, 20],
+                [20, 54], [54, 54]
             ],
             'preview': [
-                [20, 130], [54, 130], [88, 130],
-                [20, 164], [54, 164], [88, 164],
-                [20, 198], [54, 198], [88, 198]
+                [20, 130], [54, 130],
+                [20, 164], [54, 164]
             ]
         }
         return stickers[name]
 
 
     def draw_main_stickers(self, frame):
-        """Draws the 9 stickers in the frame."""
+        """Draws the 4 stickers in the frame."""
         for x,y in self.stickers:
             cv2.rectangle(frame, (x,y), (x+30, y+30), (255,255,255), 2)
 
     def draw_current_stickers(self, frame, state):
-        """Draws the 9 current stickers in the frame."""
+        """Draws the 4 current stickers in the frame."""
         for index,(x,y) in enumerate(self.current_stickers):
             cv2.rectangle(frame, (x,y), (x+32, y+32), ColorDetector.name_to_rgb(state[index]), -1)
 
     def draw_preview_stickers(self, frame, state):
-        """Draws the 9 preview stickers in the frame."""
+        """Draws the 4 preview stickers in the frame."""
         for index,(x,y) in enumerate(self.preview_stickers):
             cv2.rectangle(frame, (x,y), (x+32, y+32), ColorDetector.name_to_rgb(state[index]), -1)
 
@@ -87,7 +84,7 @@ class Webcam:
 
     def scan(self):
         """
-        Open up the webcam and scans the 9 regions in the center
+        Open up the webcam and scans the 4 regions in the center
         and show a preview in the left upper corner.
 
         After hitting the space bar to confirm, the block below the
@@ -98,12 +95,10 @@ class Webcam:
         """
 
         sides   = {}
-        preview = ['white','white','white',
-                   'white','white','white',
-                   'white','white','white']
-        state   = [0,0,0,
-                   0,0,0,
-                   0,0,0]
+        preview = ['white','white',
+                   'white','white']
+        state   = [0,0,
+                   0,0]
         while True:
             _, frame = self.cam.read()
             hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -123,13 +118,13 @@ class Webcam:
                 if key == 32:
                     preview = list(state)
                     self.draw_preview_stickers(frame, state)
-                    face = self.color_to_notation(state[4])
+                    face = self.color_to_notation(state[2])
                     notation = [self.color_to_notation(color) for color in state]
                     sides[face] = notation
 
             # show the new stickers
             self.draw_current_stickers(frame, state)
-
+            print(sides)
             # append amount of scanned sides
             text = 'scanned sides: {}/6'.format(len(sides))
             cv2.putText(frame, text, (20, 460), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)

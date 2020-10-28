@@ -1,10 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Filename      : colordetection.py
-# Author        : Kim K
-# Created       : Tue, 26 Jan 2016
-# Last Modified : Sun, 31 Jan 2016
-
+# Author Kim K
+# Modified by Sergio R
 
 from sys import exit as Die
 try:
@@ -13,7 +8,7 @@ except ImportError as err:
     Die(err)
 
 class ColorDetection:
-
+    #Using a sticker less 2x2x2 with brigher colors need to adjust
     def get_color_name(self, hsv):
         """ Get the name of the color based on the hue.
 
